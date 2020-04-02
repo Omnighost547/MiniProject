@@ -4,15 +4,15 @@ const mongo = require('mongodb');
 
 /* GET home page. */
 router.get('/', function(req, res, next) {
-  res.render('index', { title: 'Express' });
+  res.render('index', { title: 'MediaTap' });
 });
 
 router.get('/bike', function(req, res, next) {
-  res.render('bike', { title: 'Express' });
+  res.render('bike', { title: 'bike' });
 });
 
 router.get('/home', function(req, res, next) {
-  res.render('home', { title: 'Welcome!' });
+  res.render('home', { title: 'Welcome Home.' });
 });
 
 router.get('/login', function(req, res, next) {
