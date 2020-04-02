@@ -1,6 +1,57 @@
 var express = require('express');
 var router = express.Router();
-const mongo = require('mongodb');
+const MongoClient = require('mongodb').MongoClient;
+const url = 'mongodb://localhost/EmployeeDB';
+
+//Creating and closing a connection to a MongoDB database
+MongoClient.connect(url, function (err, db) {
+  console.log("Connected");
+  db.close();
+});
+
+//Querying for data in a MongoDB database
+MongoClient.connect(url, function (err, db) {
+  var cursor = db.collection('Employee').find();
+
+  cursor.each(function(err, doc) {
+
+    console.log(doc);
+
+  });
+});
+
+//Insert document into collection
+MongoClient.connect(url, function(err, db) {
+
+  db.collection('Employee').insertOne({
+    Employeeid: 4,
+    EmployeeName: "NewEmployee"
+  });
+});
+
+//Update documents in collection
+MongoClient.connect(url, function(err, db) {
+
+  db.collection('Employee').updateOne({
+    "EmployeeName": "NewEmployee"
+  }, {
+    $set: {
+      "EmployeeName": "Mohan"
+    }
+  });
+});
+
+//Delete documents in collection
+MongoClient.connect(url, function(err, db) {
+
+  db.collection('Employee').deleteOne(
+
+      {
+        "EmployeeName": "Mohan"
+      }
+
+  );
+});
 
 /* GET home page. */
 router.get('/', function(req, res, next) {
