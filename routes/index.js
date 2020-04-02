@@ -2,8 +2,7 @@ var express = require('express');
 var router = express.Router();
 const MongoClient = require('mongodb').MongoClient;
 const url = 'mongodb://localhost:27017';
-
-
+var googleScripts = require('../public/javascripts/google-api');
 
 /* GET home page. */
 router.get('/', function(req, res, next) {
@@ -11,7 +10,8 @@ router.get('/', function(req, res, next) {
 });
 
 router.get('/bike', function(req, res, next) {
-  res.render('bike', { title: 'bike' });
+  var link = googleScripts.getBlog;
+  res.render('bike', { title: 'bike', blog_url: link });
 });
 
 router.get('/home', function(req, res, next) {
