@@ -9,6 +9,8 @@
     "cookie-parser": "~1.4.4",
     "debug": "^4.1.1",
     "express": "^4.17.1",
+    "google-auth-library": "^6.0.0",
+    "googleapis": "^48.0.0",
     "hbs": "^4.1.0",
     "http-errors": "^1.7.3",
     "morgan": "^1.10.0",
